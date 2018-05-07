@@ -1,0 +1,51 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<?php
+  $catid=$GLOBALS['smarty']->_var['goods_cat']['id'];
+  $catname=$GLOBALS['smarty']->_var['goods_cat']['name'];
+?>
+<div class="series_box cle">
+    <div class="series_info">
+      <div class="series_name name_hufu">
+        <h2>{$goods_cat.name}</h2>
+      </div>
+      <ul class="brand">
+        <!--{foreach from=get_cat_brands($catid,'category',3) item=get_brands name=get_brands}--> 
+		<!-- {if $get_brands.brand_logo} -->
+			<li> <a href="{$get_brands.url}" title="{$get_brands.brand_name}" target="_blank"><img src="data/brandlogo/{$get_brands.brand_logo}"  alt="{$get_brands.brand_name}" style="display: inline;" /></a> </li>
+		<!-- {/if} -->
+        <!--{/foreach}-->   
+      </ul>
+      <div class="brand_cata">
+      <!--{foreach from=get_child_tree($catid) item=child_tree name=child_tree}-->
+	<!-- {if $smarty.foreach.child_tree.index<6}--> 
+		<a href="{$child_tree.url}" title="{$child_tree.name}" target="_blank">{$child_tree.name}</a>
+	<!--{/if}-->
+      <!--{/foreach}-->
+      </div>
+      
+    </div>
+    <div class="series_pic"> 
+	<?php
+	   $GLOBALS['smarty']->assign('adlist',get_advlist('首页_'.$catname.'_分类商品广告',1));
+	?>
+	<!--{foreach from=$adlist item=ad name=ad}-->  
+	   {$ad.content}
+	<!--{/foreach}-->
+    </div>
+    <div class="pro_list">
+      <ul class="cle">
+		<!--{foreach from=$cat_goods item=goods}-->
+        <li> <a href="{$goods.url}" target="_blank">
+          <p class="pic"> <img src="{$goods.thumb}" style="display: inline;"></p>
+          <h3>{$goods.short_name|escape:html}</h3>
+          <p class="price">  
+          <!-- {if $goods.promote_price neq ""} -->
+          {$goods.promote_price}
+          <!-- {else}-->
+          {$goods.shop_price}
+          <!--{/if}--></p>
+          </a> </li>
+		<!--{/foreach}-->
+      </ul>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="footer">
+  <div class="ft-bg">
+    <div class="w-ensure mb20">
+    	<div class="w-main">
+        	<ul>
+            	<li><a target="_blank" href=""><img width="300" height="90" src="images/ft-svr1.gif"></a></li>
+            	<li><a target="_blank" href=""><img width="300" height="90" src="images/ft-svr2.gif"></a></li>
+            	<li><a target="_blank" href=""><img width="300" height="90" src="images/ft-svr3.gif"></a></li>
+            	<li><a target="_blank" href=""><img width="300" height="90" src="images/ft-svr4.gif"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="ft_main">
+      <div class="ft_links">
+        <div class="ft_nav"> 
+          <!-- {if $navigator_list.bottom} --> 
+          <!-- {foreach name=nav_bottom_list from=$navigator_list.bottom item=nav} --> 
+          <a href="{$nav.url}"  <!-- {if $nav.opennew eq 1} -->target="_blank" <!-- {/if} --> <!-- {if $smarty.foreach.nav_bottom_list.first} --> 
+          class="noborder" 
+          <!-- {/if} --> rel="nofollow">{$nav.name}</a> 
+          <!-- {/foreach} --> 
+          <!-- {/if} --> 
+          
+        </div>
+      </div>
+      <div class="ft_txt">
+        <p>{$copyright}{$lang.icp_number}：<a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow">{$icp_number}</a></p>
+        <p class="ft_contact"> <span>服务时间：09:00-23:00</span> <!-- 客服电话{if $service_phone} --> 
+          <span class="ft_phone">客服热线: <em>{$service_phone}</em></span> 
+          <!-- 结束客服电话{/if} --></p>
+          
+          <!--{if $img_links  or $txt_links }-->
+        <p class="link"> 友情链接： 
+
+        
+		    <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+    <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>
+    <!--结束图片类型的友情链接{/foreach}-->
+    <!-- {if $txt_links} -->
+    <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+    <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>
+    <!--结束文字类型的友情链接{/foreach}-->
+    <!-- {/if} -->
+        
+         </p>
+        
+        <!--{/if}-->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 客服代码 开始 -->
+<script>
+	$(function(){
+		$(window).scroll(function(){
+			if($(window).scrollTop()>100){  //距顶部多少像素时，出现返回顶部按钮
+				$("#side-bar .gotop").fadeIn();	
+			}
+			else{
+				$("#side-bar .gotop").hide();
+			}
+		});
+		$("#side-bar .gotop").click(function(){
+			$('html,body').animate({'scrollTop':0},500); //返回顶部动画 数值越小时间越短
+		});
+	});
+</script>
+<ul id="side-bar" class="side-pannel side-bar">
+  {foreach from=$qq item=im}
+    <a href="http://wpa.qq.com/msgrd?v=3&uin={$im}&site={$shop_name}&menu=yes" target="_blank" class="kefuqq"></a>
+  {/foreach}
+  {foreach from=$ww item=im}
+    <a href="http://amos1.taobao.com/msg.ww?v=2&uid={$im|escape:u8_url}&s=2" target="_blank" class="kefuww"></a>
+  {/foreach}
+  <a href="javascript:;" class="qr weixin"><i></i></a>
+  <a href="javascript:;" class="gotop" style="display:none;"></a>
+</ul>
+<!-- 客服代码 结束 -->

@@ -1,0 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="index-banner">
+  <div class="index-slide" id="index-slide">
+    <ul>
+        <!--{foreach from=get_flash_xml() name=myflash item=flash}-->
+	  <li style="background-image: url({$flash.src});"> <a target="_blank" href="{$flash.url}" ></a> </li>
+	<!--{/foreach}-->
+    </ul>
+    <div class="trigger-box">
+      <div class="triggers">
+        <!--{foreach from=$flash item=index_ad name=foo}-->
+	  <a href="javascript:;" {if $smarty.foreach.foo.first}class="current"{/if}>{$smarty.foreach.foo.iteration}</a>
+	<!--{/foreach}-->
+      </div>
+    </div>
+  </div>
+</div>

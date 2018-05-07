@@ -1,0 +1,34 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $new_goods} -->
+        <div class="w-max ct bgwh mb30 ovh border-eee">
+        	<div class="newopro-l fl">
+			<?php
+	   $GLOBALS['smarty']->assign('adlist',get_advlist('刚出炉新品左侧广告',1));
+	?>
+	<!--{foreach from=$adlist item=ad name=ad}-->  
+	   {$ad.content}
+	<!--{/foreach}-->
+        	</div>
+        	<div class="newopro-r fr">
+        		<h2 class="index-tt">
+        			<em class="ft18 c000">刚出炉新品</em><a href="search.php?intro=new" class="fr c666">更多&gt;&gt;</a>
+        		</h2>
+                    <ul class="newgoods_fastbuy">
+		    <!--{foreach from=$new_goods item=goods}-->
+                        <li class="prolist-cent clearfix have_num">
+        			<div class="prolist-l fl"><a href="{$goods.url}" title="{$goods.name|escape:html}" class="imgBox"><img src="{$goods.thumb}" style="height: 158px;width: 158px;" class="zom" alt="{$goods.name|escape:html}" /></a></div>
+        			<div class="prolist-r fl">
+        				<h3 class="ft14 c333 bold"><a href="{$goods.url}" title="{$goods.name|escape:html}" >{$goods.name|escape:html}</a></h3>
+        				{if $goods.brief}<p><em class="c333">[推荐理由]</em>{$goods.brief}</p>{/if}
+        				<div>
+                                        <span class="p-price"><em class="fastbuy_price"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></em><del>{$lang.market_prices}:{$goods.market_price}</del></span>
+                                <a href="{$goods.url}" class="p-buy fr ibg">立即抢购</a>
+                                <span class="p-time fr">销量：{$goods.sales_volume_base}件</span>
+                                    				</div>
+        			</div>
+        		</li>
+		    <!--{/foreach}-->
+                    </ul>
+        	</div>
+        </div>
+<!-- {/if} -->

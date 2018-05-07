@@ -1,0 +1,41 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $promotion_goods} -->
+<div class="w-max ct mb30 clearfix">
+    <div class="surprise-tit clearfix">
+        <div class="fl sur-titimg overflow">
+            <img src="images/day_surprises.jpg" />
+        </div>
+    </div>
+    <div class="surprise-con clearfix bgwhite border-eee">
+        <div class="day-surimg fl" id="day-surimg" >
+   <?php
+	   $GLOBALS['smarty']->assign('adlist',get_advlist('天天惊喜左侧广告',1));
+	?>
+	<!--{foreach from=$adlist item=ad name=ad}-->  
+	   {$ad.content}
+	<!--{/foreach}-->
+        </div>
+        <div class="fr surprise-list ovh">
+            <ul class="clearfix" lang="09:00">
+                 <!--{foreach from=$promotion_goods item=goods name=promotion_foreach}-->
+		 <li>
+                    <div class="sur-hear p25">
+                        <a href="{$goods.url}" class="imgBox ftc"><img src="{$goods.thumb}" class="zom" /></a>
+                        <h1 class="overflow mt"><a href="{$goods.url}" class="ft12 c333">{$goods.short_name|escape:html}</a></h1>
+                    </div>
+                    <div class="sur-price clearfix">
+                        <div class="fl sur-numbox overflow">
+                            <div class="sur-num bold">{$goods.promote_price}</div>
+                            <p class="c999"><del>{$lang.market_prices}:{$goods.market_price}</del></p>
+                        </div>
+                        <div class="fr">
+                          <a href="{$goods.url}" class="atonce-buy bold ft14 ftc">立即抢购</a>
+			</div>
+		    </div>
+                 </li>
+		 <!--{/foreach}-->
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- {/if} -->

@@ -1,0 +1,44 @@
+/**
+ * 产品名称: Ecshop生鲜蔬菜商城模板 
+ * 使用版本：Ecshop v2.7.3版
+ * 出品单位: O菜龙工作室出品
+ * 更多模板：http://www.ocailong.com/
+ * 设计者QQ：763191200（o菜龙）
+*/
+.ke-content {
+
+	font-size: 12px;
+
+	background-color: #ffffff;
+
+}
+
+.ke-content table {
+
+	border-collapse:collapse;
+
+}
+
+.red {
+
+	color: white;
+
+	background-color: red;
+
+}
+
+.green {
+
+	color: white;
+
+	background-color: green;
+
+}
+
+.yellow {
+
+	color: white;
+
+	background-color: yellow;
+
+}

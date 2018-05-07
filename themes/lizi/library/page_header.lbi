@@ -1,0 +1,140 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/jquery.json.js"></script>
+<script type="text/javascript" src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/transport_jquery.js"></script>
+<script type="text/javascript" src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/utils.js"></script>
+<script type="text/javascript" src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/jquery.SuperSlide.js"></script>
+<script type="text/javascript" src="themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/lizi_common.js"></script>
+
+
+<style>
+
+.topimg{ width:100%; height:50px; margin:0 auto}
+.topimg a img{width:100%; height:50px; margin:0 auto; border:0px}
+</style>
+<div class="topimg">
+	<?php
+	   $GLOBALS['smarty']->assign('adlist',get_advlist('网站最顶部横幅广告',1));
+	?>
+	<!--{foreach from=$adlist item=ad name=ad}-->  
+	   {$ad.content}
+	<!--{/foreach}-->
+</div>
+<div id="header" class="new_header">
+  <div class="hd_bar">
+    <div class="bd_bar_bd cle">
+      <ul class="welcome">
+        <li><a id="favorite_wb" href="javascript:;" rel="nofollow">收藏{$shop_name}</a></li>
+		<li id="ECS_MEMBERZONE">{* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'}</li>
+      </ul>
+      <ul id="userinfo-bar">
+        <li class="more-menu"> <a href="user.php">会员中心</a><i class="iconfont arrow">&#8193;</i>
+          <div class="more-bd">
+            <div class="list"> <a href="user.php?act=order_list">我的订单</a> <a href="user.php?act=comment_list">我的评价</a> <a href="user.php?act=account_log">我的余额</a> <a href="user.php?act=bonus">我的红包</a> <a href="user.php?act=collection_list">我的收藏</a> <a href="user.php?act=address_list" class="last">修改收货地址</a> </div>
+          </div>
+        </li>
+        <li><a href="mobile/"><i class="iconfont vipico"></i>手机版</a></li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+            alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+  <div class="hd_main cle">
+    <div class="logo"> <a href="./" class="lizi_logo"><img src="../images/logo.gif" alt="{$shop_name}"/></a> 
+    </div>
+    <div class="search_box">
+      <form action="search.php" method="get" id="searchForm" name="searchForm" onSubmit="return checkSearchForm()">
+        <input class="sea_input" type="text" name="keywords" id="keyword" value="{$search_keywords|escape}" autocomplete="off">
+        <input type="hidden" value="k1" name="dataBi">
+        <button type="submit" class="sea_submit">搜索</button>
+      </form>
+    </div>
+    {if $searchkeywords}
+    <div class="head_search_hot"> <span>{$lang.hot_search}：</span> {foreach from=$searchkeywords item=val} <a href="search.php?keywords={$val|escape:url}" target="_blank">{$val}</a> {/foreach} </div>
+    {/if}
+    <div class="intro">
+      <ul>
+        <li class="no1"><a href="javascript:void(0);" target="_blank">
+          <h4>正品保障</h4>
+          <p>100%正品低价</p>
+          </a></li>
+        <li class="no2"><a href="javascript:void(0);" target="_blank">
+          <h4>30天退换货</h4>
+          <p>购物有保障</p>
+          </a></li>
+        <li class="no3"><a href="javascript:void(0);" target="_blank">
+          <h4>满99就包邮</h4>
+          <p>闪电发货</p>
+          </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="hd_nav">
+    <div class="hd_nav_bd cle">
+      <div class="main_nav" id="main_nav">
+        <div class="main_nav_link"> <a href="javascript:;">全部商品分类</a> <i class="iconfont"></i> </div>
+        <div class="main_cata" id="J_mainCata" style="opacity: 0; display: none;">
+          <ul>
+            <!--{foreach from=$categories item=cat name=foo}-->
+            <li {if $smarty.foreach.foo.first}class="first"{/if}>
+              <h3 style="background:url(data/cat_ico/{$cat.cat_ico}) 20px center no-repeat;"><a href="{$cat.url}">{$cat.name|escape:html}</a></h3>
+            </li>
+            <!--{/foreach}-->
+          </ul>
+        </div>
+       
+     
+        <div class="J_subCata" id="J_subCata" style="opacity: 0; left: 213px; top: 35px;">
+          <!--{foreach from=$categories item=cat}-->
+
+          <div class="J_subView" style="display: none;">
+          <!--{foreach from=$cat.cat_id item=child}--> 
+            <dl>
+              <dt><a href="{$child.url}">{$child.name|escape:html}</a> </dt>
+              <dd> 
+              	 <!--{foreach from=$child.cat_id item=childer}--> 
+			<a href="{$childer.url}">{$childer.name|escape:html}</a> 
+		<!--{/foreach}--> 
+              </dd>
+            </dl>
+	    <div class="clear"></div>
+              <!--{/foreach}--> 
+          </div>
+          <!--{/foreach}-->
+        </div>
+      
+        
+                
+
+      </div>
+      <ul class="sub_nav cle" id="sub_nav">
+        <li{if $navigator_list.config.index eq 1} class="current"{/if}><a href="./" rel="nofollow">{$lang.home}</a>
+        </li>
+        <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} --> 
+        <li{if $nav.active eq 1} class="current"{/if}><a href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if} rel="nofollow">{$nav.name}</a>
+        </li>
+        <!-- {/foreach} -->
+      </ul>
+      <div class="hd_cart" id="ECS_CARTINFO"> 
+         {insert name='cart_info_mb5'}
+      </div>
+    </div>
+  </div>
+  <div class="search_result"></div>
+</div>

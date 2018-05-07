@@ -1,0 +1,23 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $best_goods} -->
+<div class="tj-wrap w-max ct mb30 clearfix">
+<h2>今天推荐了哪些精品？</h2>
+ <ul>
+ <!--{foreach from=$best_goods item=goods}-->
+   <li>
+     <div class="tj-left fl">
+        <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" class="zom" /></a>
+     </div>
+     <div class="tj-right fl">
+        <h3><a href="{$goods.url}" target="_blank">{$goods.name|escape:html}</a></h3>
+        <div class="tj-price">
+           <b class="ibg"></b>
+           <em class="db ft22 cf40 bold"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></em>
+        </div>
+        <p class="tj-des lh20 c999 ovh">{$goods.brief}</p>
+     </div>
+   </li>
+ <!--{/foreach}-->
+ </ul>
+</div>
+<!-- {/if} --> 
